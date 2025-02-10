@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import { productsData } from "./data.js";
+import { appsData, productsData } from "./data.js";
 import Home from "./pages/Home/index.jsx";
 import ProductsPage from "./pages/Products/index.jsx";
 import ProductViewPage from "./pages/ProductView/ProductViewPage.jsx";
 import ProductEditPage from "./pages/ProductEdit/ProductEditPage.jsx";
+import AppsPage from "./pages/Apps/index.jsx";
+import AppViewPage from "./pages/AppView/AppViewPage.jsx";
 import "./App.css";
 
 export default function App() {
@@ -31,29 +33,40 @@ export default function App() {
               <li>
                 <Link to="/products">Products</Link>
               </li>
+              <li>
+                <Link to="/apps">Apps</Link>
+              </li>
             </ul>
           </nav>
         </div>
       </div>
 
       <br></br>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/products"
-          element={<ProductsPage products={products} />}
-        />
-        <Route
-          path="products/:id"
-          element={<ProductViewPage products={products} />}
-        />
-        <Route
-          path="products/:id/edit"
-          element={
-            <ProductEditPage products={products} setProducts={setProducts} />
-          }
-        />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/products"
+            element={<ProductsPage products={products} />}
+          />
+          <Route
+            path="products/:id"
+            element={<ProductViewPage products={products} />}
+          />
+          <Route
+            path="products/:id/edit"
+            element={
+              <ProductEditPage products={products} setProducts={setProducts} />
+            }
+          />
+
+          <Route path="apps/" element={<AppsPage apps={appsData} />} />
+          <Route
+            path="apps/:id"
+            element={<AppViewPage applications={appsData} />}
+          />
+        </Routes>
+      </div>
     </div>
   );
 }

@@ -16,7 +16,8 @@ function ProductEditPage(props) {
   function handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
-
+    console.log("name", name);
+    console.log("value", value);
     setProductToUpdate({ ...productToUpdate, [name]: value });
   }
 
@@ -48,17 +49,64 @@ function ProductEditPage(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Product Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        onChange={handleChange}
-        value={productToUpdate.name}
-        className="form-control"
-      />
+      <label htmlFor="name">
+        Product Name
+        <input
+          type="text"
+          id="name"
+          name="name"
+          onChange={handleChange}
+          value={productToUpdate.name}
+          className="form-control"
+        />
+      </label>
+      <br />
+      <br />
+      <label htmlFor="type">
+        Product Type
+        <input
+          type="text"
+          id="type"
+          name="type"
+          onChange={handleChange}
+          value={productToUpdate.type}
+          className="form-control"
+        />
+      </label>
+
+      <br />
+      <br />
+      <label htmlFor="price">
+        Product Price
+        <input
+          type="text"
+          id="price"
+          name="price"
+          onChange={handleChange}
+          value={productToUpdate.price}
+          className="form-control"
+        />
+      </label>
+      <br />
+      <br />
+      <label htmlFor="quantity">
+        quantity
+        <input
+          type="text"
+          id="quantity"
+          name="prquantityice"
+          onChange={handleChange}
+          value={productToUpdate.inventory.quantity}
+          className="form-control"
+        />
+      </label>
+      <br />
+      <br />
       <button className="btn btn-success" type="submit">
         Update
+      </button>
+      <button className="btn btn-danger" onClick={() => navigate(`/products`)}>
+        Cancel
       </button>
     </form>
   );
