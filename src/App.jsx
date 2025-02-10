@@ -49,7 +49,9 @@ export default function App() {
         />
         <Route
           path="products/:id/edit"
-          element={<ProductEditPage products={products} />}
+          element={
+            <ProductEditPage products={products} setProducts={setProducts} />
+          }
         />
       </Routes>
     </div>
